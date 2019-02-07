@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Profil;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use \Illuminate\Support\Facades\Input;
 
 class ProfilController extends Controller
 {
@@ -23,6 +25,15 @@ class ProfilController extends Controller
         ));
     }
 
+    public function show(){
+         $id = Input::get("dd");
+         $profil = Profil::find($id);
+        $competenceView =  view('profil.competence', array(
+            'competences' => $profil->competences
+        ))->render();
+        return response()->json(["success" => true,
+            "competences" => $competenceView]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -50,10 +61,10 @@ class ProfilController extends Controller
      * @param  \App\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function show(Profil $profil)
-    {
+    #public function show(Profil $profil)
+    #{
         //
-    }
+    #}
 
     /**
      * Show the form for editing the specified resource.

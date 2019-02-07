@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Trainingcategory;
+use App\Models\TrainingCategory;
 use Illuminate\Http\JsonResponse;
 
 class TrainingController extends Controller
@@ -37,7 +37,7 @@ class TrainingController extends Controller
         #        $json[] = $ft;
         #    }
         #}
-        $data = Trainingcategory::with('trainings')->get();
+        $data = TrainingCategory::with('trainings')->get();
         return new JsonResponse(['data' => $data]);
         #print response()->json(array("data" => array_values($json)));
     }

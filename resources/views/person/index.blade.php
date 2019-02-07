@@ -1,6 +1,6 @@
 @extends('master')
 @section("pagetitle")
-Personnes
+{{ __('title.persons') }}
 @endsection
 @section('content')
 <style>
@@ -137,7 +137,7 @@ Personnes
                     "searchable": false
                 }
             ],
-            "pagingType": "first_last_numbers",
+            "pagingType": "numbers",
             info: false,
             pageLength: 15,
             "lengthMenu": [
@@ -147,7 +147,7 @@ Personnes
             responsive: true,
             language: {
                 search: "_INPUT_",
-                searchPlaceholder: "Rechercher"
+                searchPlaceholder: ""
             }
 
         });

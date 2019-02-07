@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'competence' => 'Competence'
+    'competence' => 'Competence',
+    'training' => 'Training',
+    'persons' => 'Persons'
 ];

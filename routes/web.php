@@ -44,6 +44,10 @@ Route::get('users', 'UserController@index')->name('users');
 
 # Profil
 Route::get('profil', 'ProfilController@index')->name('profil');
+Route::post('profil/show', array(
+    'as' => 'show',
+    'uses' => 'ProfilController@show')
+)->name('profil.show');
 
 # Test
 Route::get('qcm', 'QcmController@index')->name('qcm');
@@ -52,7 +56,7 @@ Route::get('qcm', 'QcmController@index')->name('qcm');
 Route::get('society', 'SocietyController@index')->name('settings.society');
 Route::get('group', 'GroupController@index')->name('settings.group');
 Route::get('section', 'SectionController@index')->name('settings.section');
-Route::get('domaine', 'DomaineController@index')->name('settings.domaine');
+Route::get('domain', 'DomainController@index')->name('settings.domain');
 Route::get('agency', 'AgencyController@index')->name('settings.agency');
 Route::get('catalogue', 'CatalogueController@index')->name('settings.catalogue');
 Route::get('modele', 'ModeleController@index')->name('settings.modele');

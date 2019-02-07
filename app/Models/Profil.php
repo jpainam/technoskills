@@ -11,4 +11,7 @@ class Profil extends Model
         $column = 'description_'.$locale;
         return $this->attributes[$column];
     }
+    public function competences(){
+         return $this->belongsToMany(Competence::class, ProfilCompetence::class);
+    }
 }

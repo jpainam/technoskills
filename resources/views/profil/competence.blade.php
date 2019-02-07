@@ -1,1 +1,0 @@
-a datatable for competence

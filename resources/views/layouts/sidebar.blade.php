@@ -104,9 +104,9 @@
                     </a>
                 </li>
                  <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('settings.domaine') }}">
+                    <a class="nav-link" href="{{ route('settings.domain') }}">
                         <span class="sidebar-mini"> DO </span>
-                        <span class="sidebar-normal"> {{ __('menu.settings.domaine') }} </span>
+                        <span class="sidebar-normal"> {{ __('menu.settings.domain') }} </span>
                     </a>
                 </li>
                  <li class="nav-item ">

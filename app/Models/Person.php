@@ -9,13 +9,13 @@ class Person extends Model
     protected $table = 'persons';
     
     public function profils(){
-        return $this->belongsToMany(Profil::class, 'PersonneProfil');
+        return $this->belongsToMany(Profil::class, PersonProfil::class);
     }
     public function country(){
         return $this->belongsTo(Country::class);
     }
     public function competences(){
-        return $this->belongsToMany(Competence::class)
+        return $this->belongsToMany(Competence::class, 'person_competence')
                 ->withPivot('certification')->withTimestamps();
     }
     public function section(){

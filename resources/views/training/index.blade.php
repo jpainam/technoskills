@@ -1,4 +1,7 @@
 @extends('master')
+@section("pagetitle")
+{{ __('title.training') }}
+@endsection
 @section('content')
 <div class="row">
     <div class="col-lg-5 col-md-12">
@@ -51,7 +54,7 @@
                         '</tr>' +
                         '<tr style="border-bottom:2px solid green"><td></td>' +
                         '<td colspan="2">Lieu de formation</td>' +
-                        '<td colspan="2">' + $f.LIEULIBELLE + '</td>' +
+                        '<td colspan="2">' + $f.place + '</td>' +
                         '</tr>';
             }
             return '</table>' + $str;
@@ -69,6 +72,9 @@
                 {"data": "code"},
                 {"data": "title"}
             ],
+            "pagingType": "numbers",
+            pageLength: 40,
+            info:false,
             "order": [[1, 'asc']]
         });
         // Add event listener for opening and closing details

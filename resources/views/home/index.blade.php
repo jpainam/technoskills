@@ -17,25 +17,25 @@
         </div>
     </div>
     <div class="col-md-6">
-         <div class="material-datatables">
-            <table id="nextTrainingTable" class="table table-striped table-no-bordered table-hover">
-                <thead>
+                <div class="material-datatables">
+                    <table id="nextTrainingTable" class="table table-striped table-no-bordered table-hover">
+                        <thead>
                     <tr><th></th><th></th><th></th><th></th></tr>
-                </thead>
-                <tbody>
-                    @foreach($trainings as $tr)
-                    <tr>
-                        <td class="event-azure"></td>
-                        <td>{{ $tr }}</td>
+                        </thead>
+                        <tbody>
+                        @foreach($trainings as $tr)
+                            <tr>
+                                <td class="event-azure"></td>
+                                <td>{{ $tr }}</td>
                         <td class="text-right">{{ $tr->start }} </td>
                         <td class="text-right">{{ $tr->end }} </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 <!-- <button type="button" class="btn btn-round btn-default dropdown-toggle btn-link" data-toggle="dropdown">
 7 days
