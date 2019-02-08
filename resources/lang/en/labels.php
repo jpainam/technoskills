@@ -18,5 +18,7 @@ return [
     'competences' => 'Competences',
     'person' => 'Person',
     'persons' => 'Persons',
-    'type' => 'Type'
+    'type' => 'Type',
+    'firstname' => 'First Name',
+    'lastname' => 'Last Name'
 ];

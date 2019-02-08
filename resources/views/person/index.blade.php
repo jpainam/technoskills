@@ -49,10 +49,10 @@
     <!-- end col-md-4 -->
     <div class="col-lg-8 col-md-12">
         <div class="card">
-            <div class="card-header card-header-tabs card-header-primary">
+            <div class="card-header card-header-tabs card-header-primary" style="padding-bottom: 0px; padding-top: 0px;">
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
-                        <span class="nav-tabs-title">D&eacute;tails:</span>
+                        <span class="nav-tabs-title" style="padding: 0px;">D&eacute;tails:</span>
                         <ul class="nav nav-tabs" data-tabs="tabs">
                             <li class="nav-item">
                                 <a class="nav-link active" href="#information" data-toggle="tab">

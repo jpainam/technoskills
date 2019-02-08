@@ -1,17 +1,27 @@
 @extends('master')
 @section('pagetitle')
-Test
+{{ __('title.qcm') }}
 @endsection
 @section('content')
-
+<style>
+    div.dataTables_length {
+        display: none;
+    }
+    #qcmTable tr{
+        cursor: pointer;
+    }
+    #qcmTable .selected{
+        background-color: #9c27b0;
+    }
+</style>
 <div class="row">
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header card-header-primary card-header-icon">
+            <!-- div class="card-header card-header-primary card-header-icon">
                 <div class="card-icon">
                     <i class="material-icons">timeline</i>
                 </div>
-            </div>
+            </div -->
             <div class="card-body">
                 <div class="toolbar">
                     <!--        Here you can write extra buttons/actions for the toolbar              -->
@@ -20,6 +30,7 @@ Test
                     <table id="qcmTable" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>{{ __('labels.description') }}</th>
                                 <th>{{ __('labels.type') }}</th>
                             </tr>
@@ -27,7 +38,8 @@ Test
                         <tbody>
                             @foreach($qcm as $q)
                             <tr>
-                                <td>{{ $q->description }}</td>
+                                <td> {{ $q->id }} </td>
+                                <td> {{ $q->description }} </td>
                                 <td> {{ $q->base }} </td>
                             </tr>
                             @endforeach
@@ -57,12 +69,18 @@ Test
 </div>
 <script>
     $(document).ready(function () {
-        $('#qcmTable').DataTable({
-            //"pagingType": "full_numbers",
-            //"lengthMenu": [
-            //    [10, 25, 50, -1],
-             //   [10, 25, 50, "All"]
-            //],
+       var qcmTable = $('#qcmTable').DataTable({
+           "columnDefs": [
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }, {
+                    "targets": 2,
+                    "orderable": false
+                }
+            ],
+            pagingType: "numbers",
             scrollCollapse: true,
             info: false,
             pageLength: 15,
@@ -73,26 +91,29 @@ Test
             }
         });
 
-        var table = $('#qcmTable').DataTable();
+         qcmTable.on('click', 'td', function () {
+            $("#qcmTable tr").removeClass("selected");
+            var $tr = $(this).closest('tr');
 
-        // Edit record
-        table.on('click', '.edit', function () {
-            $tr = $(this).closest('tr');
-            var data = table.row($tr).data();
-            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-        });
-
-        // Delete a record
-        table.on('click', '.remove', function (e) {
-            $tr = $(this).closest('tr');
-            table.row($tr).remove().draw();
-            e.preventDefault();
-        });
-
-        //Like record
-        table.on('click', '.like', function () {
-            alert('You clicked on Like button');
-        });
+            $tr.addClass("selected");
+            var tblData = qcmTable.rows('.selected').data();
+            var tmpData = tblData[0];
+            $.ajax({
+                type: 'POST',
+                url: "{{ URL::to('/qcm/show') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    dd: tmpData[0]
+                },
+                success: function (msg) {
+                    if (msg.success) {
+                        $("#competences").html(msg.competences);
+                        $("#persons").html(msg.persons);
+                        $("#potentiels").html(msg.potentiels);
+                    }
+                }
+            });
+        });          
     });
 </script>
 @endsection

@@ -31,8 +31,12 @@ class ProfilController extends Controller
         $competenceView =  view('profil.competence', array(
             'competences' => $profil->competences
         ))->render();
+        $personView = view('profil.person', array(
+            'persons' => $profil->persons
+        ))->render();
         return response()->json(["success" => true,
-            "competences" => $competenceView]);
+            "competences" => $competenceView, 
+            'persons' => $personView]);
     }
     /**
      * Show the form for creating a new resource.

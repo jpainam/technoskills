@@ -1,4 +1,4 @@
-<div cla="row">
+<div class="row">
     <div class="col-md-3 ml-auto">
         <button class="btn btn-primary" id="btnAddComptence"> <span class="fa fa-plus"> </span> &nbsp;Ajouter</button>
     </div>
@@ -24,17 +24,27 @@
                 <td>{{ $c->pivot->competence_id }}</td>
                 <td>{{ $c->description }}</td>
                 <td> {{ $c->level->description }}</td>
-                <td> {{ $c->pivot->certification }} </td>
+                @if($c->pivot->certification == 'CE')
+                <td> {{ __('competence.certified') }} </td>
+                @elseif($c->pivot->certification == 'NC')
+                <td> {{ __('competence.notcertified') }} </td>
+                @elseif($c->pivot->certification == 'EC')
+                <td> {{ __('competence.currently') }} </td>
+                @else
+                <td> {{ __('competence.tocertify') }} </td>
+                @endif
                 <td>
                     <div class="dropdown pull-left">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-cog fa-2x"> </i> 
+                        <button type="button" class="dropdown-toggle" style="background-color: transparent;border: none;" 
+                                data-toggle="dropdown" aria-expanded="false">
+                           <!-- i class="fa fa-cog fa-2x"> </i --> 
                             <span class="caret"></span>
                             <div class="ripple-container"></div></button>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu" x-placement="top-end" sytle="color: #000;" x-out-of-boundaries="">
                             <li><a href="javascript:void(0);" style="color: #111">Certifier</a></li>
                             <li><a href="javascript:void(0);" style="color: #111">Info</a></li>
-                            <li class="divider"></li><li> <a href="javascript:void(0);" style="color: #111">Supprimer</a></li>
+                            <li class="divider"> </li>
+                            <li> <a href="javascript:void(0);" style="color: #111">Supprimer</a></li>
                         </ul>
                     </div>
                 </td>
@@ -84,6 +94,10 @@
                     "targets": 1,
                     "visible": false,
                     "searchable": false
+                },  {
+                    "targets": [4,5],
+                    "searchable": false,
+                    "orderable": false
                 }],
             "pagingType": "first_last_numbers",
             info: false,
@@ -97,34 +111,6 @@
                 searchPlaceholder: "Rechercher"
             }
 
-        });
-
-        competenceTable.on('click', 'td', function () {
-            $("#competenceTable tr").removeClass("selected");
-            $tr = $(this).closest('tr');
-
-            $tr.addClass("selected");
-            var tblData = competenceTable.rows('.selected').data();
-            var tmpData = tblData[0];
-            console.log(tmpData);
-            /*$.each(tblData, function (i, val) {
-             tmpData = tblData[i];
-             console.log(tmpData);
-             });
-             console.log(tmpData);
-             $.ajax({
-             type:'POST',
-             url:"{{ URL::to('/personne/show') }}",
-             data:{
-             _token: "{{ csrf_token() }}",
-             dd: tmpData[0]
-             },
-             success: function( msg ) {
-             if(msg.success){
-             $("#person_detail").html(msg.html);
-             }
-             }
-             });*/
         });
     });
 </script>

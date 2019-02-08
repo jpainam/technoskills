@@ -122,8 +122,8 @@ Profil
                 },
                 success: function (msg) {
                     if (msg.success) {
-                        $("#information").html(msg.information);
                         $("#competences").html(msg.competences);
+                        $("#persons").html(msg.persons);
                     }
                 }
             });

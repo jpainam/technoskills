@@ -12,6 +12,9 @@ class Profil extends Model
         return $this->attributes[$column];
     }
     public function competences(){
-         return $this->belongsToMany(Competence::class, ProfilCompetence::class);
+         return $this->belongsToMany(Competence::class, "profil_competence");
+    }
+    public function persons(){
+        return $this->belongsToMany(Person::class, 'profil_person');
     }
 }

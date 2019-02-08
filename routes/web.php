@@ -51,6 +51,11 @@ Route::post('profil/show', array(
 
 # Test
 Route::get('qcm', 'QcmController@index')->name('qcm');
+Route::post('qcm/show', array(
+    'as' => 'show',
+    'uses' => 'QcmController@show')
+)->name('qcm.show');
+
 
 # Settings
 Route::get('society', 'SocietyController@index')->name('settings.society');
