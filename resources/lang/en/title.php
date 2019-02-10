@@ -4,5 +4,6 @@ return [
     'competence' => 'Competence',
     'training' => 'Training',
     'persons' => 'Persons',
-    'qcm' => 'Tests'
+    'qcm' => 'Tests',
+    'documents' => 'Documents'
 ];

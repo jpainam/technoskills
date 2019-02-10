@@ -13,6 +13,13 @@
     #personTable .selected{
         background-color: #9c27b0;
     }
+    .dataTables_wrapper .dataTables_length {
+        float: right;
+    }
+    .dataTables_wrapper .dataTables_filter {
+        float: right;
+        text-align: left;
+    }
 </style>
 <div class="row">
     <div class="col-lg-4 col-md-12">
@@ -48,41 +55,58 @@
     </div>
     <!-- end col-md-4 -->
     <div class="col-lg-8 col-md-12">
+        <div class="col-md-12 ml-auto">
+            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Ajouter</a>
+            <a href="#" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> Modifier</a>
+            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</a>
+        </div>
         <div class="card">
             <div class="card-header card-header-tabs card-header-primary" style="padding-bottom: 0px; padding-top: 0px;">
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
-                        <span class="nav-tabs-title" style="padding: 0px;">D&eacute;tails:</span>
+                        <!-- span class="nav-tabs-title" style="padding: 0px;">D&eacute;tails:</span -->
                         <ul class="nav nav-tabs" data-tabs="tabs">
                             <li class="nav-item">
                                 <a class="nav-link active" href="#information" data-toggle="tab">
-                                    <i class="material-icons">person</i> Informations
+                                    <i class="material-icons">person</i>
                                     <div class="ripple-container"></div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#competences" data-toggle="tab">
-                                    <i class="material-icons">apps</i> Comp&eacute;tences
+                                    <i class="material-icons">apps</i> {{ __('title.competence') }}
                                     <div class="ripple-container"></div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#formations" data-toggle="tab">
-                                    <i class="material-icons">work</i> Formations
+                                    <i class="material-icons">work</i> {{ __('title.training') }}
                                     <div class="ripple-container"></div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#tests" data-toggle="tab">
-                                    <i class="material-icons">timeline</i> Tests
+                                    <i class="material-icons">timeline</i> {{ __('title.qcm') }}
                                     <div class="ripple-container"></div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#documents" data-toggle="tab">
-                                    <i class="material-icons">folder_shared</i> Documents
+                                    <i class="material-icons">folder_shared</i>{{ __('title.documents') }}
                                     <div class="ripple-container"></div>
                                 </a>
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="#person_action" id="navbarAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarAction">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-plus"></i> Ajouter</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Supprimer</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -151,7 +175,7 @@
             }
 
         });
-        
+
         personTable.on('click', 'td', function () {
             $("#personTable tr").removeClass("selected");
             $tr = $(this).closest('tr');

@@ -20,5 +20,10 @@ return [
     'persons' => 'Persons',
     'type' => 'Type',
     'firstname' => 'First Name',
-    'lastname' => 'Last Name'
+    'lastname' => 'Last Name',
+    'by' => 'Par',
+    'grade' => 'Note',
+    'date' => 'Date',
+    'certification' => 'Certification',
+    'level' => 'Level'
 ];

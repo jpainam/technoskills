@@ -10,9 +10,9 @@
             <tr>
                 <th></th>
                 <th></th>
-                <th>Libell&eacute; de la comp&eacute;tence</th>
-                <th>Niveau</th>
-                <th>Certification</th>
+                <th>{{ __('labels.description') }}</th>
+                <th>{{ __('labels.level') }}</th>
+                <th>{{ __('labels.certification') }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -43,7 +43,7 @@
                         <ul class="dropdown-menu dropdown-menu-right" role="menu" x-placement="top-end" sytle="color: #000;" x-out-of-boundaries="">
                             <li><a href="javascript:void(0);" style="color: #111">Certifier</a></li>
                             <li><a href="javascript:void(0);" style="color: #111">Info</a></li>
-                            <li class="divider"> </li>
+                            <li class="divider"> <div class="dropdown-divider"></div></li>
                             <li> <a href="javascript:void(0);" style="color: #111">Supprimer</a></li>
                         </ul>
                     </div>

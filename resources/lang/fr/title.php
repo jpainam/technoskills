@@ -3,5 +3,6 @@ return [
     'competence' => 'Compétence',
     'training' => 'Formations',
     'persons' => 'Personnes',
-    'qcm' => 'Tests'
+    'qcm' => 'Tests',
+    'documents' => 'Documents'
 ];
